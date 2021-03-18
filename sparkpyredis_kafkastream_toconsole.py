@@ -130,7 +130,7 @@ zSetEntriesDecodedStreamingDF\
     .createOrReplaceTempView("CustomerRecords")\
 
 
-# TO-DO: JSON parsing will set non-existent fields to null, so let's select just the fields we want, where they are not null as a new dataframe called emailAndBirthDayStreamingDF
+#JSON parsing will set non-existent fields to null, so let's select just the fields we want, where they are not null as a new dataframe called emailAndBirthDayStreamingDF
 
 emailAndBirthDayStreamingDF = spark.sql("select customerName as customerName, email as email, birthDay from CustomerRecords where birthDay is not null")
 
@@ -163,6 +163,3 @@ emailAndBirthYearStreamingDF.writeStream.outputMode("append").format("console").
 # |Sarah.Clark@test.com|1957|
 # +--------------------+-----
 
-# Run the python script by running the command from the terminal:
-# /home/workspace/submit-redis-kafka-streaming.sh
-# Verify the data looks correct 
